@@ -8,6 +8,20 @@ from lazy import json
 from lazy.json import dumps
 ```
 
+## Try it out!
+
+One-off
+
+```shell
+uv run --isolated --with https://github.com/tmr232/lazy-import-hack.git python
+```
+
+Or install it
+
+```shell
+uv add https://github.com/tmr232/lazy-import-hack.git
+```
+
 ## Known Issues
 
 Does not work for subpackage imports:
