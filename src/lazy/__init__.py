@@ -39,14 +39,15 @@ class MyLazyObjectProxy(wrapt.LazyObjectProxy):
 
 def lazy_import(name, attribute=None):
     # Based on wrapt.lazy_import, but adds support for callables.
-
     def _import():
         module = __import__(name, fromlist=[""])
-
         if attribute is not None:
             return getattr(module, attribute)
 
         return module
+
+    # Support packages
+    sys.modules[f"lazy.{name}"] = ModuleAttributeProxy(name)
 
     return MyLazyObjectProxy(_import)
 
